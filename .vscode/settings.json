@@ -1,0 +1,14 @@
+{
+    "python.testing.pytestArgs": [
+        "HW - Testing con Copilot"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+
+    ,
+    // Use the venv created for the "HW - Testing con Copilot" test folder so the test UI sees pytest and pytest-cov
+    "python.defaultInterpreterPath": "${workspaceFolder}/HW - Testing con Copilot/.venv/Scripts/python.exe",
+    "python.pythonPath": "${workspaceFolder}/HW - Testing con Copilot/.venv/Scripts/python.exe",
+    // Optional: point pytestPath directly at the venv pytest executable if present
+    "python.testing.pytestPath": "${workspaceFolder}/HW - Testing con Copilot/.venv/Scripts/pytest.exe"
+}
