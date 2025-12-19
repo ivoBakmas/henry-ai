@@ -4,7 +4,7 @@ This quickstart shows how to run the minimal prototype that demonstrates the thr
 
 - CSV account-balance lookup
 - Knowledge-base retrieval (mocked/simple)
-- General LLM response (uses `OPENAI_API_KEY` if provided)
+- General LLM response (uses LLM API key if provided, currently supports GROQ_API_KEY, GITHUB_TOKEN, OPENAI_API_KEY)
 
 Prerequisites
 
@@ -160,17 +160,6 @@ $env:GROQ_API_KEY = "mock"
 
 Common troubleshooting
 
-- DNS / network errors calling GROQ (e.g. `Failed to resolve 'api.groq.ai'`):
-	- Run these PowerShell checks:
-		```powershell
-		nslookup api.groq.ai
-		Resolve-DnsName api.groq.ai
-		Test-NetConnection -ComputerName api.groq.ai -Port 443
-		ipconfig /flushdns
-		```
-	- If DNS fails on your network, try a different network (phone hotspot), check your system `hosts` file, or configure a public DNS (1.1.1.1 or 8.8.8.8).
-	- Corporate proxies/firewalls: set `HTTP_PROXY` / `HTTPS_PROXY` in PowerShell or configure the system proxy.
-
 - Missing packages (e.g. `pandas` or `pytest`): ensure you installed `deliverable/prototype/requirements.txt` into the venv.
 
 - OpenAI SDK errors about `ChatCompletion` deprecation: use the installed OpenAI version or the updated client interface. The prototype supports both older and new `openai` clients; ensure your installed `openai` package is compatible with your account.
@@ -183,23 +172,5 @@ Common troubleshooting
 	setx GROQ_API_KEY "gsk_..."  # persists for future sessions
 	```
 
-Further improvements (suggested)
-
-- Add a GitHub Actions workflow that runs the tests using the mock server (start server in background and run `pytest`).
-- Replace the simple KB retriever with FAISS-backed retrieval and include precomputed indices in `deliverable/index/` so reviewers can run without building indexes.
-- Add a Windows `Start-Job` or small PowerShell wrapper to run the mock server as a background job.
-
-If you want, I can add CI workflow, a background-run PowerShell script for the mock server, or wire the prototype to a prebuilt FAISS index next.
-
-$env:GROQ_API_KEY = "mock"
-.\venv\Scripts\python.exe main.py llm --query "What is the capital of France?"
-```
-
-Stopping the mock server
-
-- Focus the Terminal A window where `mock_groq_server.py` is running and press `Ctrl+C` to stop it.
-
 Notes
-
 - The mock server returns a canned response (it echoes the user query in the assistant message). It's intended for offline functional testing only and does not emulate real model behavior.
-- If you'd like the server to log requests to a file or run as a background service, I can add a wrapper script or a Windows `Start-Job`/`Start-Process` example — tell me which you prefer.

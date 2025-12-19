@@ -90,4 +90,4 @@ This document describes the plan, milestones, and required artifacts for the aut
 3. Implement `csv_lookup.py` and a small CLI runner in `main.py`.
 
 ---
-_Generated automatically and placed in `deliverable/` as requested._
+---
