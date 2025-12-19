@@ -11,7 +11,7 @@ from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())  # read local .env file
 
 
-llm = ChatOpenAI(model="gpt-4-0125-preview")
+llm = ChatOpenAI(model="gpt-4o")
 
 embeddings_model_name = "sentence-transformers/all-MiniLM-L6-v2"
 embeddings = HuggingFaceEmbeddings(model_name=embeddings_model_name)
